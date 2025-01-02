@@ -13,11 +13,15 @@ public class Manager {
     }
 
     public Queue<Customer> getCustomerQueue() {
-        return new LinkedList<>(customerQueue); // Return a copy to preserve encapsulation
+        return new LinkedList<>(customerQueue);
     }
 
     public Map<String, Parcel> getParcelMap() {
-        return new HashMap<>(parcelMap); // Return a copy to preserve encapsulation
+        return new HashMap<>(parcelMap);
+    }
+
+    public Worker getWorker() {
+        return worker;
     }
 
     public Customer processNextCustomer() {
@@ -28,7 +32,7 @@ public class Manager {
                 customer.setParcel(parcel);
                 worker.processCustomer(customer);
                 double fee = worker.calculateFee(parcel);
-                Log.getInstance().addEvent("Fee for " + customer.getName() + ": $" + fee);
+                Log.getInstance().addEvent(String.format("Fee for %s: $%.2f", customer.getName(), fee));
                 return customer;
             } else {
                 Log.getInstance().addEvent("No parcel found for " + customer.getName());
@@ -72,26 +76,33 @@ public class Manager {
 
         // Load parcel data
         String[] parcelData = {
-                "X009\t9\t1\t9\t9\t7", "X020\t1\t1\t6\t4\t14", "X025\t7\t1\t4\t9\t9",
-                "X036\t8\t4\t6\t9\t12", "X064\t8\t4\t1\t8\t15", "X086\t7\t4\t1\t7\t13",
-                "X121\t3\t7\t2\t3\t6", "X198\t9\t4\t8\t0\t10", "X213\t4\t8\t5\t2\t15",
-                "X214\t1\t8\t1\t1\t15", "X278\t5\t3\t1\t0\t11", "X285\t1\t4\t3\t1\t10",
-                "X309\t1\t2\t8\t5\t11", "X316\t9\t5\t4\t0\t11", "X386\t9\t1\t6\t5\t9",
-                "X475\t4\t3\t8\t1\t11", "X507\t5\t3\t9\t8\t13", "X521\t6\t4\t4\t4\t8",
-                "X540\t9\t2\t5\t4\t5", "X552\t4\t5\t7\t8\t12", "X606\t8\t8\t4\t2\t13",
-                "X682\t3\t6\t4\t4\t12", "X720\t4\t2\t1\t3\t8", "X733\t6\t6\t5\t7\t11",
-                "X746\t4\t4\t9\t5\t7", "X780\t4\t1\t2\t5\t12", "X782\t5\t3\t2\t7\t12",
-                "X857\t2\t6\t6\t3\t9", "X904\t4\t1\t4\t9\t15", "X919\t5\t8\t7\t4\t10"
+                "X009\t9.0\t1.0\t9.0\t7.0\t5", "X020\t1.0\t1.0\t6.0\t14.0\t3",
+                "X025\t7.0\t1.0\t4.0\t9.0\t7", "X036\t8.0\t4.0\t6.0\t12.0\t2",
+                "X064\t8.0\t4.0\t1.0\t15.0\t4", "X086\t7.0\t4.0\t1.0\t13.0\t6",
+                "X121\t3.0\t7.0\t2.0\t6.0\t1", "X198\t9.0\t4.0\t8.0\t10.0\t8",
+                "X213\t4.0\t8.0\t5.0\t15.0\t3", "X214\t1.0\t8.0\t1.0\t15.0\t5",
+                "X278\t5.0\t3.0\t1.0\t11.0\t2", "X285\t1.0\t4.0\t3.0\t10.0\t7",
+                "X309\t1.0\t2.0\t8.0\t11.0\t4", "X316\t9.0\t5.0\t4.0\t11.0\t6",
+                "X386\t9.0\t1.0\t6.0\t9.0\t3", "X475\t4.0\t3.0\t8.0\t11.0\t5",
+                "X507\t5.0\t3.0\t9.0\t13.0\t2", "X521\t6.0\t4.0\t4.0\t8.0\t8",
+                "X540\t9.0\t2.0\t5.0\t5.0\t1", "X552\t4.0\t5.0\t7.0\t12.0\t3",
+                "X606\t8.0\t8.0\t4.0\t13.0\t7", "X682\t3.0\t6.0\t4.0\t12.0\t4",
+                "X720\t4.0\t2.0\t1.0\t8.0\t6", "X733\t6.0\t6.0\t5.0\t11.0\t2",
+                "X746\t4.0\t4.0\t9.0\t7.0\t5", "X780\t4.0\t1.0\t2.0\t12.0\t3",
+                "X782\t5.0\t3.0\t2.0\t12.0\t8", "X857\t2.0\t6.0\t6.0\t9.0\t1",
+                "X904\t4.0\t1.0\t4.0\t15.0\t4", "X919\t5.0\t8.0\t7.0\t10.0\t6"
         };
 
         for (String data : parcelData) {
             String[] parts = data.split("\t");
-            int[] dimensions = new int[4];
-            for (int i = 0; i < 4; i++) {
-                dimensions[i] = Integer.parseInt(parts[i + 1]);
-            }
-            double weight = Double.parseDouble(parts[5]);
-            Parcel parcel = new Parcel(parts[0], dimensions, weight);
+            Parcel parcel = new Parcel(
+                    parts[0],
+                    Double.parseDouble(parts[1]),
+                    Double.parseDouble(parts[2]),
+                    Double.parseDouble(parts[3]),
+                    Double.parseDouble(parts[4]),
+                    Integer.parseInt(parts[5])
+            );
             addParcel(parcel);
         }
     }
