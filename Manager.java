@@ -53,6 +53,10 @@ public class Manager {
         Log.getInstance().addEvent("New customer added: " + customer.getName());
     }
 
+    public Parcel getParcel(String parcelId) {
+        return parcelMap.get(parcelId);
+    }
+
     private void loadData() {
         // Load customer data
         String[] customerData = {
