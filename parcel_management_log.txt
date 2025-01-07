@@ -1,0 +1,124 @@
+New customer added: Andrew Robertson
+New customer added: Ann Jones
+New customer added: Blair Foster
+New customer added: Bob Dawson
+New customer added: Chris Smith
+New customer added: Dave Jackson
+New customer added: David Hunter
+New customer added: Donald Murray
+New customer added: Fiona Thoms
+New customer added: Gillian Hamilton
+New customer added: Harry Johnston
+New customer added: Helen Webster
+New customer added: Jack Houston
+New customer added: Jo Hill
+New customer added: Joe Woods
+New customer added: John Brown
+New customer added: Judy Hilman
+New customer added: Keith Burns
+New customer added: Lily Watson
+New customer added: Lucy Grey
+New customer added: Mary Brown
+New customer added: Pamela Field
+New customer added: Peter White
+New customer added: Robert Murray
+New customer added: Susan Turner
+New customer added: Thomas Young
+New customer added: Tim Smith
+New customer added: Tony Lawson
+New customer added: Ursula Milton
+New customer added: Viola Nicholson
+New parcel added: X009
+New parcel added: X020
+New parcel added: X025
+New parcel added: X036
+New parcel added: X064
+New parcel added: X086
+New parcel added: X121
+New parcel added: X198
+New parcel added: X213
+New parcel added: X214
+New parcel added: X278
+New parcel added: X285
+New parcel added: X309
+New parcel added: X316
+New parcel added: X386
+New parcel added: X475
+New parcel added: X507
+New parcel added: X521
+New parcel added: X540
+New parcel added: X552
+New parcel added: X606
+New parcel added: X682
+New parcel added: X720
+New parcel added: X733
+New parcel added: X746
+New parcel added: X780
+New parcel added: X782
+New parcel added: X857
+New parcel added: X904
+New parcel added: X919
+Processing customer: Andrew Robertson
+Fee for Andrew Robertson: $21.80
+Processing customer: Ann Jones
+Fee for Ann Jones: $18.82
+Processing customer: Blair Foster
+Fee for Blair Foster: $17.72
+Processing customer: Bob Dawson
+Fee for Bob Dawson: $15.58
+Processing customer: Chris Smith
+Fee for Chris Smith: $23.30
+Processing customer: Dave Jackson
+Fee for Dave Jackson: $21.30
+Processing customer: David Hunter
+Fee for David Hunter: $13.65
+Processing customer: Donald Murray
+Fee for Donald Murray: $18.08
+Processing customer: Fiona Thoms
+Fee for Fiona Thoms: $18.96
+Processing customer: Gillian Hamilton
+Fee for Gillian Hamilton: $14.54
+Processing customer: Harry Johnston
+Fee for Harry Johnston: $11.72
+Processing customer: Helen Webster
+Fee for Helen Webster: $16.66
+Processing customer: Jack Houston
+Fee for Jack Houston: $15.30
+Processing customer: Jo Hill
+Fee for Jo Hill: $20.62
+Processing customer: Joe Woods
+Fee for Joe Woods: $18.60
+Processing customer: John Brown
+Fee for John Brown: $16.81
+Processing customer: Judy Hilman
+Fee for Judy Hilman: $18.66
+Processing customer: Keith Burns
+Fee for Keith Burns: $16.90
+Processing customer: Lily Watson
+Fee for Lily Watson: $9.92
+Processing customer: Lucy Grey
+Fee for Lucy Grey: $20.28
+Processing customer: Mary Brown
+Fee for Mary Brown: $24.88
+Processing customer: Pamela Field
+Fee for Pamela Field: $21.96
+Processing customer: Peter White
+Fee for Peter White: $15.92
+Processing customer: Robert Murray
+Fee for Robert Murray: $24.56
+Processing customer: Susan Turner
+Fee for Susan Turner: $20.08
+Processing customer: Thomas Young
+Fee for Thomas Young: $15.85
+Processing customer: Tim Smith
+Fee for Tim Smith: $16.56
+Processing customer: Tony Lawson
+Fee for Tony Lawson: $20.78
+Processing customer: Ursula Milton
+Fee for Ursula Milton: $17.44
+Processing customer: Viola Nicholson
+Fee for Viola Nicholson: $9.90
+No more customers in queue
+No more customers in queue
+No more customers in queue
+No more customers in queue
