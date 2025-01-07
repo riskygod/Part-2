@@ -4,6 +4,19 @@ public class Worker {
     }
 
     public double calculateFee(Parcel parcel) {
-        return parcel.getWeight() * 2.5;
+        // Base fee
+        double fee = 5.0;
+
+        // Add fee based on weight
+        fee += parcel.getWeight() * 0.5;
+
+        // Add fee based on volume
+        double volume = parcel.getLength() * parcel.getWidth() * parcel.getHeight();
+        fee += volume * 0.01;
+
+        // Add fee for days in warehousez
+        fee += parcel.getDaysInWarehouse() * 1.5;
+
+        return fee;
     }
 }
