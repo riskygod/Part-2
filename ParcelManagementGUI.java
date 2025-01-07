@@ -9,6 +9,9 @@ public class ParcelManagementGUI extends JFrame {
     private JTextArea currentParcelArea;
     private JButton processButton;
     private JButton addParcelButton;
+    private JButton addCustomerButton;
+    private JButton findParcelButton;
+    private JButton saveLogButton;
 
     public ParcelManagementGUI(Manager manager) {
         this.manager = manager;
@@ -41,8 +44,15 @@ public class ParcelManagementGUI extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout());
         processButton = new JButton("Process Next Customer");
         addParcelButton = new JButton("Add New Parcel");
+        addCustomerButton = new JButton("Add Customer");
+        findParcelButton = new JButton("Find Parcel");
+        saveLogButton = new JButton("Save Log");
+
         buttonPanel.add(processButton);
         buttonPanel.add(addParcelButton);
+        buttonPanel.add(addCustomerButton);
+        buttonPanel.add(findParcelButton);
+        buttonPanel.add(saveLogButton); // Add Save Log button to the panel
 
         add(customerPanel, BorderLayout.WEST);
         add(parcelPanel, BorderLayout.EAST);
@@ -51,6 +61,9 @@ public class ParcelManagementGUI extends JFrame {
 
         processButton.addActionListener(e -> processNextCustomer());
         addParcelButton.addActionListener(e -> addNewParcel());
+        addCustomerButton.addActionListener(e -> addNewCustomer());
+        findParcelButton.addActionListener(e -> findParcel());
+        saveLogButton.addActionListener(e -> saveLog()); // Add action listener for the Save Log button
     }
 
     private void updateLists() {
@@ -122,6 +135,58 @@ public class ParcelManagementGUI extends JFrame {
                         "Input Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+
+    private void addNewCustomer() {
+        JTextField nameField = new JTextField(20);
+        JTextField idField = new JTextField(10);
+
+        JPanel panel = new JPanel(new GridLayout(0, 2));
+        panel.add(new JLabel("Customer Name:"));
+        panel.add(nameField);
+        panel.add(new JLabel("Customer ID:"));
+        panel.add(idField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Add New Customer",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String name = nameField.getText();
+            String id = idField.getText();
+            if (!name.isEmpty() && !id.isEmpty()) {
+                Customer newCustomer = new Customer(name, id);
+                manager.addCustomer(newCustomer);
+                updateLists();
+            } else {
+                JOptionPane.showMessageDialog(this, "Name and ID cannot be empty.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void findParcel() {
+        String parcelId = JOptionPane.showInputDialog(this, "Enter Parcel ID:");
+        if (parcelId != null && !parcelId.trim().isEmpty()) {
+            Parcel parcel = manager.getParcel(parcelId.trim());
+            if (parcel != null) {
+                String parcelInfo = String.format(
+                        "Parcel ID: %s\nDimensions: %.2f x %.2f x %.2f\nWeight: %.2f\nDays in Warehouse: %d",
+                        parcel.getId(),
+                        parcel.getLength(),
+                        parcel.getWidth(),
+                        parcel.getHeight(),
+                        parcel.getWeight(),
+                        parcel.getDaysInWarehouse()
+                );
+                currentParcelArea.setText(parcelInfo);
+            } else {
+                currentParcelArea.setText("No parcel found.");
+            }
+        }
+    }
+
+    private void saveLog() {
+        manager.writeLogToFile();  // Save the log to a file
+        JOptionPane.showMessageDialog(this, "Log saved to parcel_management_log.txt", "Log Saved", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void main(String[] args) {
